@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CrawlerLibrary
 {
-    public class Character
+    public abstract class Character
     {
         //Fields
         private string _name;
