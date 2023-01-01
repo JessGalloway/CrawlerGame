@@ -15,17 +15,17 @@ namespace CrawlerLibrary
         private int _health;
         private int _maxHealth;
         private int _attack;
+        private int _maxAttack;
         private int _defense;
+        private int _maxDefense;
         private int _speed;
+        private int _maxSpeed;
         private int _level;
+        private int _maxLevel;
         private int _experience;
+        private int _maxExperience;
         private int _gold;
         private int _maxGold;
-        private int _maxExperience;
-        private int _maxLevel;
-        private int _maxAttack;
-        private int _maxDefense;
-        private int _maxSpeed;
         private int _accuracy;
         private int _maxAccuracy;
         private int _dodge;
@@ -118,15 +118,15 @@ namespace CrawlerLibrary
 
         public override string ToString()
         {
-            return $"----------------------------------\n" +
-                   $"{Name}   lvl:{Level} Gold: {Gold}\n" +
-                   $"     Hp: {Health}/{MaxHealth}  \n" +
-                   $" Exp: {Experience} {MaxExperience}\n" +
-                   $"----------------------------------\n" +
-                   $"       Atk: {Attack}\n" +
-                   $"       Def: {Defense}\n" +
-                   $"       Spd: {Speed}\n" +
-                   $"----------------------------------\n";
+            return $"                                         ----------------------------------\n" +
+                   $"                                              {Name}      lvl:{Level}      Gold: {Gold}\n" +
+                   $"                                                       Hp: {Health}/{MaxHealth}  \n" +
+                   $"                                                       Exp: {Experience} {MaxExperience}\n" +
+                   $"                                          ----------------------------------\n" +
+                   $"                                                       Atk: {Attack}\n" +
+                   $"                                                       Def: {Defense}\n" +
+                   $"                                                       Spd: {Speed}\n" +
+                   $"                                          ----------------------------------\n";
         }
 
         public virtual int CalcDefense() { return Defense; }
