@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archer.cs" />
+    <Compile Include="Battle.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Mage.cs" />
     <Compile Include="Monster.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SwordsMan.cs" />
     <Compile Include="SwordsWoman.cs" />
+    <Compile Include="WeaponType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,27 +14,32 @@ namespace CrawlerLibrary
         //properties
 
         //constructors
-        public SwordsWoman(string name, int health, int maxHealth, int attack, int maxAttack, int defense, int maxDefense, int speed, int maxSpeed, int level, int maxLevel, int experience, int maxExperience, int gold, int maxGold, int accuracy, int maxAccuracy, int dodge, int maxDodge) : base(name, health, maxHealth, attack, maxAttack, defense, maxDefense, speed, maxSpeed, level, maxLevel, experience, maxExperience, gold, maxGold, accuracy, maxAccuracy, dodge, maxDodge)
+        public SwordsWoman(string name, int maxHealth, int health, int attack, int maxAttack, int defense, int maxDefense, int speed, int maxSpeed, int level, int maxLevel, int experience, int maxExperience, int gold, int maxGold, int accuracy, int maxAccuracy, int dodge, int maxDodge) : base(name, health, maxHealth, attack, maxAttack, defense, maxDefense, speed, maxSpeed, level, maxLevel, experience, maxExperience, gold, maxGold, accuracy, maxAccuracy, dodge, maxDodge)
         {
 
-            experience = 11;
-            attack = 10;
-            maxAttack = 12;
-            defense = 13;
-            maxDefense = 19;
-            speed = 75;
-            maxSpeed = 100;
-            gold = 20;
-            maxGold = 25;
-            accuracy = 95;
-            maxAccuracy = 100;
-            dodge = 35;
-            maxDodge = 50;
+            
 
 
         }//end FQCTOR
 
-        public SwordsWoman() { }
+        public SwordsWoman() 
+        {
+            Name = "Undead";
+            Experience = 11;
+            Attack = 12;
+            MaxAttack = 15;
+            Defense = 13;
+            MaxDefense = 19;
+            Speed = 60;
+            MaxSpeed = 100;
+            Gold = 00;
+            MaxGold = 15;
+            Accuracy = 90;
+            MaxAccuracy = 100;
+            Dodge = 35;
+            MaxDodge = 50;
+
+        }
 
         //methods
 

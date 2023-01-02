@@ -34,9 +34,11 @@ namespace CrawlerLibrary
         //Properties
         public string Name { get { return _name; } set { _name = value; } }
         
-        public int Health { get { return _health; } set { _health = value; } }
+       
 
         public int MaxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
+
+        public int Health { get { return _health; } set { _health = value >= MaxHealth ? value : MaxHealth;} }
 
         public int Attack { get { return _attack; } set { _attack = value; } }
 
@@ -73,7 +75,7 @@ namespace CrawlerLibrary
 
         //Constructor
 
-        public Character(string name, int health, int maxHealth, int attack, int maxAttack, int defense, int maxDefense, int speed, int maxSpeed, int level, int maxLevel, int experience, int maxExperience, int gold, int maxGold, int accuracy, int maxAccuracy, int dodge, int maxDodge) 
+        public Character(string name, int maxHealth, int health, int attack, int maxAttack, int defense, int maxDefense, int speed, int maxSpeed, int level, int maxLevel, int experience, int maxExperience, int gold, int maxGold, int accuracy, int maxAccuracy, int dodge, int maxDodge) 
         {
 
             Name = name;

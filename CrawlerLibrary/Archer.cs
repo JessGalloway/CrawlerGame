@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,27 +16,32 @@ namespace CrawlerLibrary
         //properties
 
         //constructors
-        public Archer(string name, int health, int maxHealth, int attack, int maxAttack, int defense, int maxDefense, int speed, int maxSpeed, int level, int maxLevel, int experience, int maxExperience, int gold, int maxGold, int accuracy, int maxAccuracy, int dodge, int maxDodge) : base(name, health, maxHealth, attack, maxAttack, defense, maxDefense, speed, maxSpeed, level, maxLevel, experience, maxExperience, gold, maxGold, accuracy, maxAccuracy, dodge, maxDodge) 
+        public Archer(string name, int maxHealth, int health, int attack, int maxAttack, int defense, int maxDefense, int speed, int maxSpeed, int level, int maxLevel, int experience, int maxExperience, int gold, int maxGold, int accuracy, int maxAccuracy, int dodge, int maxDodge) : base(name, health, maxHealth, attack, maxAttack, defense, maxDefense, speed, maxSpeed, level, maxLevel, experience, maxExperience, gold, maxGold, accuracy, maxAccuracy, dodge, maxDodge) 
         {
 
-            experience = 10;
-            attack = 05;
-            maxAttack = 7;
-            defense = 10;
-            maxDefense = 15;
-            speed = 75;
-            maxSpeed = 100;
-            gold = 8;
-            maxGold = 15;
-            accuracy = 75;
-            maxAccuracy = 100;
-            dodge = 25;
-            maxDodge = 50;
+           
             
             
         }//end FQCTOR
 
-        public Archer() { }
+        public Archer() 
+        {
+            Name = "Thief";
+            Experience = 10;
+            Attack = 05;
+            MaxAttack = 7;
+            Defense = 10;
+            MaxDefense = 15;
+            Speed = 75;
+            MaxSpeed = 100;
+            Gold = 8;
+            MaxGold = 15;
+            Accuracy = 75;
+            MaxAccuracy = 100;
+            Dodge = 25;
+            MaxDodge = 50;
+
+        }
 
         //methods
 

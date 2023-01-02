@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace CrawlerGame
 {
@@ -21,56 +22,76 @@ namespace CrawlerGame
 
             MainMenu();
 
+            Console.Clear();
+            Console.WriteLine("\n");
+            CenterString("May I have your name Traveler?");
+            string userName = Console.ReadLine().ToString();
+            Console.WriteLine();
+            Thread.Sleep(600);
+            Console.Clear();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Green;
+            CenterString($"{userName} has now been registered. Please wait while we prepare the game.");
+            Console.ResetColor();
+            
+            Player test = new Player(name: userName, 20, 20, 10, 13, 10, 13, 10, 13, 5, 30, 0, 45, 0, 999, 65, 100, 5, 50);
+            
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine($"{test}");
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Green;
+            CenterString("Generating player environment");
+            Console.ResetColor();
+            Thread.Sleep(500);
+            CenterString(".");
+            Thread.Sleep(500);
+            CenterString(".");
+            Thread.Sleep(450);
+            CenterString(".");
+            Thread.Sleep(400);
+            CenterString(".");
+            Thread.Sleep(300);
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Green;
+            CenterString("Initilized");
+            Console.ResetColor();
+
+
             bool quit = false;
                         
             do
             {
-                Console.Clear();
-                Console.WriteLine("\n");
-                CenterString("May I have your name Traveler?");
-                string userName = Console.ReadLine().ToString();
-                Console.WriteLine();
-                Thread.Sleep(600);
-
-                Console.Clear();
-                Console.WriteLine();
-                CenterString($"{userName} has now been registered. Please wait while we prepare the game.");                
-                Player test = new Player(name: userName, 30, 30, 10, 13, 10, 13, 10, 13, 5, 30, 0, 45, 0, 999999, 100, 100, 50, 100);
-                Console.WriteLine();
-                Console.WriteLine($"{test}");
-
-                CenterString("Generating player environment");
-                Thread.Sleep(500);
-                CenterString(".");
-                Thread.Sleep(500);
-                CenterString(".");
-                Thread.Sleep(450);
-                CenterString(".");
-                Thread.Sleep(400);
-                CenterString(".");
-                Thread.Sleep(300);
-                Console.WriteLine();
-
-                CenterString("Initilized");
-
+   
                 Console.WriteLine("\n\n");
-                
 
 
+                Monster testMon = Monster.GetMonster();
                 string environment = GetEnvironment();
                 string envForm = (String.Format("{0," + ((Console.WindowWidth /2) + (environment.Length / 2)) + "}", environment));
+                Console.WriteLine();
+                CenterString("You enter an area resembling a");
+                Console.WriteLine();
                 Console.WriteLine(envForm);
+                Console.WriteLine();
+                CenterString("Upon entering you encounter what seems to be a Lone ");
+                Console.WriteLine();
+                CenterString(testMon.Name);
+                Console.WriteLine();
+                CenterString("Certainly doesn't seem like the friendly type....");
                 Console.WriteLine("\n\n");
 
+                
 
+                int score = 0;
 
                 bool reload = false;
 
                 do
                 {
 
-                    
-                    
+
+
 
                     string pInfo = " C) Player Info";
                     string mInfo = "  F) Monster Info\n";
@@ -79,7 +100,7 @@ namespace CrawlerGame
                     alignStringRight(mInfo);
 
 
-                    
+
 
 
 
@@ -95,78 +116,116 @@ namespace CrawlerGame
                     switch (battleChoice)
                     {
                         case "c":
-
+                            Console.ForegroundColor = ConsoleColor.DarkBlue;
                             Console.WriteLine("\n\n");
                             Console.WriteLine(test);
                             Console.WriteLine();
-
-                            CenterString("Continue? Y/N");
-                            Console.WriteLine("\n\n");
-                            string quitChoiceInfo1 = Console.ReadKey(true).Key.ToString().ToLower();
-                            if (quitChoiceInfo1 == "y")
-                            {
-                                Console.WriteLine();
-                                CenterString("On we go!");
-                                Console.WriteLine();
-                            }
-                            else if (quitChoiceInfo1 == "n")
-                            {
-                                Console.WriteLine("\n\n");
-                                CenterString("Come Back for more adventure!");
-                                Console.WriteLine("\n\n\n\n\n");
-                                quit = true;
-                            }
-
-
-
-
+                            Console.ReadKey();
+                            Console.ResetColor();
 
                             break;
 
                         case "f":
-                            //TODO ADD monster info
-                            //Console.WriteLine("Monster Info");
-                            //Console.WriteLine("Name: " + monster.Name);
-                            //Console.WriteLine("Health: " + monster.Health);
-                            //Console.WriteLine("Attack: " + monster.Attack);
-                            //Console.WriteLine("Defense: " + monster.Defense);
-                            //Console.WriteLine("Speed: " + monster.Speed);
-                            //Console.WriteLine("Level: " + monster.Level);
-                            //Console.WriteLine("Experience: " + monster.Experience);
-                            //Console.WriteLine("Gold: " + monster.Gold);
-                            //Console.WriteLine("Accuracy: " + monster.Accuracy);
-                            //Console.WriteLine("Dodge: " + monster.Dodge);
-                            //Console.WriteLine("Press any key to continue.");
-                            //Console.ReadKey(true);
-                            reload = true;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.WriteLine("\n\n");
+                            Console.WriteLine(testMon);
+                            Console.WriteLine();
+                            Console.ReadKey();
+                            Console.ResetColor();
+
                             break;
+
                         case "w":
-                            
-                            Console.WriteLine("You attack the monster!");
-                            //Console.ReadKey(true);
-                           // reload = true;
+
+                            CenterString("You attacked swiftly!");
+                            Battle.DoBattle(test, testMon);
+
+                            if (testMon.Health <= 0)
+                            {
+                                Console.WriteLine("\n");
+                                CenterString($"{testMon.Name} has been defeated!");
+                                Console.WriteLine("\n");
+                                score++;
+
+                                int goldgrab = testMon.Gold;
+                                int expgrab = testMon.Experience;
+                                test.Gold = goldgrab;
+                                test.Experience = expgrab;
+
+                                CenterString($"{test.Name} has gained {goldgrab} gold!");
+                                Console.WriteLine();
+                                CenterString($"{test.Name} has gained {expgrab} experience!");
+
+                                test.Gold += goldgrab;
+                                test.Experience += expgrab;
+
+
+
+                                Console.ReadKey(true);
+                                reload = true;
+                            }
+
+
                             break;
                         case "s":
-                            //Console.Clear();
-                            Console.WriteLine("You defend against the monster!");
-                            //Console.WriteLine("Press any key to continue.");
-                            //Console.ReadKey(true);
-                           // reload = true;
+
+                            CenterString("You attempt to defend yourself!");
+                            Battle.DoDefendBattle(testMon,test);
+
+                            if (test.Health <= 0)
+                            {
+                                Console.WriteLine("\n");
+                                CenterString("Even with defenses bulstered you couldn't withstand the onslaught..");
+                                Console.WriteLine("\n");
+                                CenterString($"{testMon}: GameOver-----GameOver-----GameOver----");
+                                Console.WriteLine();
+                                CenterString($"Score: {score}");
+
+                            }
+                            else
+                            {
+                                break;
+
+                            }
+
+
+
                             break;
                         case "d":
                         case "a":
                             //Console.Clear();
-                            Console.WriteLine("You dodge the monster's attack!");
-                            //Console.WriteLine("Press any key to continue.");
-                            //Console.ReadKey(true);
-                            //reload = true;
+                            CenterString("You attmpt to  dodge an attack!");
+                            
+                            Battle.DoDefendBattle(testMon, test);
+
+                            if (test.Health <= 0)
+                            {
+                                Console.WriteLine("\n");
+                                CenterString("Even with your speed and cunning you couldnt out maneuver your foe..");
+                                Console.WriteLine("\n");
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                CenterString($"{testMon}: GameOver-----GameOver-----GameOver----");
+                                Console.WriteLine();
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                CenterString($"Score: {score}");
+                                Console.ResetColor();
+
+                            }
+                            else
+                            {
+                                break;
+
+                            }
                             break;
                         case "r":
                             //Console.Clear();
-                            Console.WriteLine("You run away from the monster!");
-                            //Console.WriteLine("Press any key to continue.");
-                            //Console.ReadKey(true);
-                            //reload = true;
+                            CenterString("You attempt to run away from the fight!");
+
+                            CenterString($"{testMon.Name} unleashes one last blow as you turn to run.");
+                            Battle.DoRunBattle(testMon, test);
+                            Console.WriteLine();
+
+                            reload = true;
                             break;
                         case "x":
                         case "escape":
@@ -175,7 +234,7 @@ namespace CrawlerGame
                             string quitChoice = Console.ReadKey(true).Key.ToString().ToLower();
                             if (quitChoice == "y")
                             {
-                               
+
                                 quit = false;
                             }
                             else if (quitChoice == "n")
@@ -183,21 +242,37 @@ namespace CrawlerGame
                                 Console.WriteLine("\n\n\n\n");
                                 CenterString(" Come Back For more Adventure?!");
                                 Console.WriteLine("\n\n\n\n");
-                                
+
                                 quit = true;
                             }
                             break;
                         default:
-                            Console.WriteLine("Invalid Choice");
+                            Console.ForegroundColor = ConsoleColor.DarkBlue;
+                           CenterString("Invalid Choice");
+                            Console.ResetColor();
                             //Console.WriteLine("Press any key to continue.");
                             //Console.ReadKey(true);
                             //reload = true;
-                            
+
                             break;
 
+                    }//end switch
+
+                    if (test.Health <= 0) 
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        CenterString("No Mortal Escapes Death....");
+                        Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        CenterString("===========");
+                        CenterString("Final Score");
+                        CenterString(Convert.ToString(score));
+                        CenterString("===========");
+                        Console.ReadKey(true);
+                        Console.ResetColor();
+
+                        quit = true;
                     }
-
-
 
 
 
