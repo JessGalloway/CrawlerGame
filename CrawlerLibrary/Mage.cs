@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,27 +14,32 @@ namespace CrawlerLibrary
         //properties
 
         //constructors
-        public Mage(string name, int health, int maxHealth, int attack, int maxAttack, int defense, int maxDefense, int speed, int maxSpeed, int level, int maxLevel, int experience, int maxExperience, int gold, int maxGold, int accuracy, int maxAccuracy, int dodge, int maxDodge) : base(name, health, maxHealth, attack, maxAttack, defense, maxDefense, speed, maxSpeed, level, maxLevel, experience, maxExperience, gold, maxGold, accuracy, maxAccuracy, dodge, maxDodge)
+        public Mage(string name, int maxHealth, int health, int attack, int maxAttack, int defense, int maxDefense, int speed, int maxSpeed, int level, int maxLevel, int experience, int maxExperience, int gold, int maxGold, int accuracy, int maxAccuracy, int dodge, int maxDodge) : base(name, health, maxHealth, attack, maxAttack, defense, maxDefense, speed, maxSpeed, level, maxLevel, experience, maxExperience, gold, maxGold, accuracy, maxAccuracy, dodge, maxDodge)
         {
 
-            experience = 23;
-            attack = 19;
-            maxAttack = 25;
-            defense = 0;
-            maxDefense = 0;
-            speed = 65;
-            maxSpeed = 100;
-            gold = 20;
-            maxGold = 25;
-            accuracy = 45;
-            maxAccuracy = 100;
-            dodge = 40;
-            maxDodge = 50;
+           
 
 
         }//end FQCTOR
 
-        public Mage() { }
+        public Mage() 
+        {
+            Name = "Elf";
+            Experience = 23;
+            Attack = 19;
+            MaxAttack = 25;
+            Defense = 0;
+            MaxDefense = 0;
+            Speed = 65;
+            MaxSpeed = 100;
+            Gold = 20;
+            MaxGold = 25;
+            Accuracy = 45;
+            MaxAccuracy = 100;
+            Dodge = 40;
+            MaxDodge = 50;
+
+        }
 
         //methods
 
