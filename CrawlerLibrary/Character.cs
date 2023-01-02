@@ -121,11 +121,11 @@ namespace CrawlerLibrary
             return $"                                         ----------------------------------\n" +
                    $"                                              {Name}      lvl:{Level}      Gold: {Gold}\n" +
                    $"                                                       Hp: {Health}/{MaxHealth}  \n" +
-                   $"                                                       Exp: {Experience} {MaxExperience}\n" +
+                   $"                                                       Exp: {Experience}/{MaxExperience}\n" +
                    $"                                          ----------------------------------\n" +
-                   $"                                                       Atk: {Attack}\n" +
-                   $"                                                       Def: {Defense}\n" +
-                   $"                                                       Spd: {Speed}\n" +
+                   $"                                                        Atk: {Attack}\n" +
+                   $"                                                        Def: {Defense}\n" +
+                   $"                                                        Spd: {Speed}\n" +
                    $"                                          ----------------------------------\n";
         }
 
@@ -138,6 +138,10 @@ namespace CrawlerLibrary
         public virtual int CalcAttack() { return Attack; }
         
         public abstract int CalcDamage();
+
+        //Methods
+        
+        
 
         
 
