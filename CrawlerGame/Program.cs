@@ -136,8 +136,9 @@ namespace CrawlerGame
                             break;
 
                         case "w":
-
+                            Console.WriteLine();
                             CenterString("You attacked swiftly!");
+                            Console.WriteLine();
                             Battle.DoBattle(test, testMon);
 
                             if (testMon.Health <= 0)
