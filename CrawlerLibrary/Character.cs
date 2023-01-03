@@ -38,7 +38,7 @@ namespace CrawlerLibrary
 
         public int MaxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
 
-        public int Health { get { return _health; } set { _health = value >= MaxHealth ? value : MaxHealth;} }
+        public int Health { get { return _health; } set { _health = value; } }
 
         public int Attack { get { return _attack; } set { _attack = value; } }
 
