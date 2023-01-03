@@ -24,7 +24,7 @@ namespace CrawlerLibrary
             Thread.Sleep(200);
 
 
-            bool success = roll <= attacker.Accuracy - defender.Dodge;
+            bool success = roll <= attacker.CalcAccuracy() - defender.CalcDodge();
             if (success)
             {
                 int damage = attacker.CalcDamage();
@@ -53,7 +53,7 @@ namespace CrawlerLibrary
             DoAttack(player, monster);
             if (monster.Health > 0)
             {
-                DoAttack(monster, player);
+                DoAttack(monster,player);
                 
             }
 

@@ -22,6 +22,8 @@ namespace CrawlerGame
 
             MainMenu();
 
+           
+            
             Console.Clear();
             Console.WriteLine("\n");
             CenterString("May I have your name Traveler?");
@@ -33,9 +35,11 @@ namespace CrawlerGame
             Console.ForegroundColor = ConsoleColor.Green;
             CenterString($"{userName} has now been registered. Please wait while we prepare the game.");
             Console.ResetColor();
+
+            jumpPoint:
             
             Player test = new Player(name: userName, 20, 20, 10, 13, 10, 13, 10, 13, 5, 30, 0, 45, 0, 999, 65, 100, 5, 50);
-            
+
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine($"{test}");
@@ -236,15 +240,17 @@ namespace CrawlerGame
                             if (quitChoice == "y")
                             {
 
-                                quit = false;
+                                quit = true;
                             }
                             else if (quitChoice == "n")
                             {
                                 Console.WriteLine("\n\n\n\n");
                                 CenterString(" Come Back For more Adventure?!");
                                 Console.WriteLine("\n\n\n\n");
-
-                                quit = true;
+                                
+                                quit = false;
+                                
+                                goto jumpPoint;
                             }
                             break;
                         default:
@@ -261,7 +267,14 @@ namespace CrawlerGame
 
                     if (test.Health <= 0) 
                     {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        CenterString("You've Died......");
+                        Console.ResetColor();
+                        Console.ReadKey();
+                        Console.Clear();
                         Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\n\n\n\n\n\n");
+                        
                         CenterString("No Mortal Escapes Death....");
                         Console.WriteLine();
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -269,9 +282,30 @@ namespace CrawlerGame
                         CenterString("Final Score");
                         CenterString(Convert.ToString(score));
                         CenterString("===========");
+                        Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine(test);
                         Console.ReadKey(true);
                         Console.ResetColor();
 
+                        Console.Clear();
+                        CenterString("Do you wish to continue? Y/N");
+                        string quitChoiceInfo = Console.ReadKey(true).Key.ToString().ToLower();
+                        if (quitChoiceInfo == "y")
+                        {
+                            Console.WriteLine();
+                            CenterString("Gotta love the adventurous types!");
+                            Console.WriteLine();
+                            
+                            goto jumpPoint;
+                        }
+                        else if (quitChoiceInfo == "n")
+                        {
+                            Console.WriteLine("\n\n");
+                            CenterString("Come Back for more adventure!");
+                            Console.WriteLine("\n\n\n\n\n");
+                            
+                        }
                         quit = true;
                     }
 
