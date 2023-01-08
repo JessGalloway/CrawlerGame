@@ -33,7 +33,7 @@ namespace CrawlerGame
             string userName = Console.ReadLine().ToString();
             
 
-
+            
 
 
 
@@ -50,15 +50,14 @@ namespace CrawlerGame
 
             Weapons w1 = new Weapons("unaarmed", 5, 8, 100, 14, WeaponType.None);
                 
-            Console.WriteLine(w1);
-            Weapons w2 = new Weapons("Sword", 5, 8, 100, 14, WeaponType.Sword);
-            Console.ReadKey();
-            Player test = new Player(name: userName, 30, 30, 11, 12, 11, 11, 10, 0, 20, 0, 2000, 100, 40, w2);
-            Console.WriteLine(test.EquippedWeapon);
-            test.EquippedWeapon = w1;
-            Console.WriteLine(test.EquippedWeapon);
+           
+           //w Weapons w2 = new Weapons("Sword", 5, 8, 100, 14, WeaponType.Sword);
+            //Weapons.GetWeaponType(w2);
+            //Console.ReadKey();
+            Player test = new Player(name: userName, 30, 30, 11, 12, 11, 11, 10, 0, 20, 0, 2000, 100, 40, w1);
+           
 
-            CenterString("Choose a Weapon?");
+            CenterString("Choose a Weapon? Press enter when done.");
           
             CenterString("[1] Dagger");
             Console.WriteLine();
@@ -79,10 +78,15 @@ namespace CrawlerGame
             CenterString("[9] Unarmed");
             //string weaponChoice = Console.ReadKey(true).Key.ToString();
 
-            
-          
 
-            switch (Console.ReadKey(true).Key.ToString()) 
+            string Response = Console.ReadKey(true).Key.ToString();
+            Response = Response[1].ToString();
+            
+            // string output = string.Format("You have chosen \t{0}", "userName");
+            //Console.WriteLine("\t\tWelcome. Please type your name.");
+            //Console.WriteLine("user picked " + Response);
+            //D4 D7
+            switch (Response) 
             {
                 
                 case "1" :
@@ -155,8 +159,8 @@ namespace CrawlerGame
 
             }
 
-            Console.WriteLine(w1);
-            Console.WriteLine();
+            //Console.WriteLine(w1);
+            //Console.WriteLine();
             CenterString($"{w1}");
             Console.ReadKey();
 

@@ -20,13 +20,14 @@ namespace CrawlerLibrary
 
         public string Name { get { return _name; } set { _name = value; } }
 
-        public int MaxDamage { get { return _maxDamage; } set { _maxDamage = value; } }
+       
 
         public int Accuracy { get { return _accuracy; } set { _accuracy = value; } }
 
         public int Dodge { get { return _dodge; } set { _dodge = value; } }
 
         public WeaponType Type { get { return _type; } set { _type = value; } }
+        public int MaxDamage { get { return _maxDamage; } set { _maxDamage = value; } }
         public int MinDamage
         {
             get { return _minDamage; }
@@ -39,8 +40,9 @@ namespace CrawlerLibrary
         public Weapons(string name, int minDamage, int maxDamage, int accuracy, int dodge, WeaponType type)
         {
             Name = name;
-            MinDamage = minDamage;
             MaxDamage = maxDamage;
+            MinDamage = minDamage;
+            
             Accuracy = accuracy;
             Dodge = dodge;
             Type = type;
@@ -51,7 +53,19 @@ namespace CrawlerLibrary
 
 
 
-        
+        //public WeaponType weapon()
+        //{
+        //    Type = WeaponType.Sword;
+        //    Type = WeaponType.Dagger;
+        //    Type = WeaponType.Axe;
+        //    Type = WeaponType.Bow;
+        //    Type = WeaponType.BoStaff;
+        //    Type = WeaponType.Katana;
+        //    Type = WeaponType.Magic;
+        //    Type = WeaponType.Whip;
+        //    Type = WeaponType.None;
+            
+        //}
 
 
 
@@ -68,7 +82,7 @@ namespace CrawlerLibrary
         public override string ToString()
         {
             return $"{Name}\t{MinDamage} to {MaxDamage} Damage\n" +
-                $"Bonus Hit: {Accuracy}%\n" +
+                $"B: {Accuracy}%\n" +
                 $"Bonus Dodge: {Dodge}%\n";
         }
 
