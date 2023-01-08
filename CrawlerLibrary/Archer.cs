@@ -16,13 +16,11 @@ namespace CrawlerLibrary
         //properties
 
         //constructors
-        public Archer(string name, int maxHealth, int health, int attack, int maxAttack, int defense, int maxDefense, int speed, int maxSpeed, int level, int maxLevel, int experience, int maxExperience, int gold, int maxGold, int accuracy, int maxAccuracy, int dodge, int maxDodge) : base(name, health, maxHealth, attack, maxAttack, defense, maxDefense, speed, maxSpeed, level, maxLevel, experience, maxExperience, gold, maxGold, accuracy, maxAccuracy, dodge, maxDodge) 
+        public Archer(string name, int maxHealth, int health, int attack, int maxAttack, int defense, int speed, int level, int maxLevel, int experience, int gold, int accuracy, int dodge) : base (name, maxHealth, health, attack, maxAttack, defense, speed, level, experience, gold, accuracy,dodge)
         {
 
-           
-            
-            
-        }//end FQCTOR
+
+        }
 
         public Archer() 
         {
@@ -30,16 +28,12 @@ namespace CrawlerLibrary
             Experience = 10;
             Attack = 05;
             MaxAttack = 7;
-            Defense = 10;
-            MaxDefense = 15;
-            Speed = 75;
-            MaxSpeed = 100;
-            Gold = 8;
-            MaxGold = 15;
-            Accuracy = 75;
-            MaxAccuracy = 100;
-            Dodge = 25;
-            MaxDodge = 50;
+            Defense = 10;            
+            Speed = 75;            
+            Gold = 8;            
+            Accuracy = 100;
+            Dodge = 5;
+            
 
         }
 

@@ -1,6 +1,7 @@
 ﻿using CrawlerLibrary;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,23 +23,144 @@ namespace CrawlerGame
 
             MainMenu();
 
-           
-            
+            int origRow = Console.CursorTop;
+            int origCol = Console.CursorLeft;
+
             Console.Clear();
             Console.WriteLine("\n");
             CenterString("May I have your name Traveler?");
+            Console.SetCursorPosition(origCol + 57, origRow - 17);
             string userName = Console.ReadLine().ToString();
-            Console.WriteLine();
+            
+
+
+
+
+
             Thread.Sleep(600);
             Console.Clear();
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Green;
             CenterString($"{userName} has now been registered. Please wait while we prepare the game.");
+            Console.WriteLine("\n");
             Console.ResetColor();
 
             jumpPoint:
+            weaponJump:
+
+            Weapons w1 = new Weapons("unaarmed", 5, 8, 100, 14, WeaponType.None);
+                
+            Console.WriteLine(w1);
+            Weapons w2 = new Weapons("Sword", 5, 8, 100, 14, WeaponType.Sword);
+            Console.ReadKey();
+            Player test = new Player(name: userName, 30, 30, 11, 12, 11, 11, 10, 0, 20, 0, 2000, 100, 40, w2);
+            Console.WriteLine(test.EquippedWeapon);
+            test.EquippedWeapon = w1;
+            Console.WriteLine(test.EquippedWeapon);
+
+            CenterString("Choose a Weapon?");
+          
+            CenterString("[1] Dagger");
+            Console.WriteLine();
+            CenterString("[2] Sword");
+            Console.WriteLine();
+            CenterString("[3] Axe");
+            Console.WriteLine();
+            CenterString("[4] Bow");
+            Console.WriteLine();
+            CenterString("[5] Bo-Staff");
+            Console.WriteLine();
+            CenterString("[6] Katana");
+            Console.WriteLine();
+            CenterString("[7] Magic");
+            Console.WriteLine();
+            CenterString("[8] Whip");
+            Console.WriteLine();
+            CenterString("[9] Unarmed");
+            //string weaponChoice = Console.ReadKey(true).Key.ToString();
+
             
-            Player test = new Player(name: userName, 20, 20, 10, 13, 10, 13, 10, 13, 5, 30, 0, 45, 0, 999, 65, 100, 5, 50);
+          
+
+            switch (Console.ReadKey(true).Key.ToString()) 
+            {
+                
+                case "1" :
+                    CenterString("I feel kinda bad, you wanna take a bow as well?");
+                    Console.WriteLine();
+                    Weapons dagger = new Weapons("Dagger", 7, 13, 100, 20, WeaponType.Dagger);
+                    w1 = dagger;
+                    break;
+                case "2":
+                    CenterString("Nothing flashy just the right tool for the job.");
+                    Console.WriteLine();
+                    Weapons sword = new Weapons("Sword", 5, 5, 100, 0, WeaponType.Sword);
+                    w1 = sword;
+                    break;
+                case "3":
+                    CenterString("I had an Axe once...");
+                    Console.WriteLine();
+                    Weapons axe = new Weapons("Axe", 1, 5, 100, 0, WeaponType.Axe);
+                    w1 = axe;
+                    break;
+                case "4":
+                    CenterString("Fear of close ecounters? Preference for anonymity? Guess it's none of my business....");
+                    Console.WriteLine();
+                    Weapons bow = new Weapons("Bow", 1, 5, 100, 0, WeaponType.Bow);
+                    w1 = bow;
+                    break;
+                case "5":
+                    CenterString("That's what I call class!");
+                    Console.WriteLine();
+                    Weapons boStaff = new Weapons("Bo-Staff", 1, 5, 100, 0, WeaponType.BoStaff);
+                    w1 = boStaff;
+                    break;
+                case "6":
+                    CenterString("A fitting weapon indeed...");
+                    Console.WriteLine();
+                    Weapons katana = new Weapons("Katana", 1, 5, 100, 0, WeaponType.Katana);
+                    w1 = katana;
+                    break;
+                case "7":
+                    CenterString("Not everyday you meet a magic user.");
+                    Console.WriteLine();
+                    Weapons magic = new Weapons("Magic", 1, 5, 100, 0, WeaponType.Magic);
+                    w1 = magic;
+                    break;
+                case "8":
+                    CenterString("Happy hunting cowboy.");
+                    Console.WriteLine();
+                    Weapons whip = new Weapons("Whip", 1, 5, 100, 0, WeaponType.Whip);
+                    w1 = whip;
+                    break;
+                case "9":
+                    Weapons unarmed = new Weapons("Unarmed", 1, 5, 100, 0, WeaponType.None);
+                    CenterString("Unarmed it is +5 to");
+                    
+                    Console.WriteLine(".");
+                    Thread.Sleep(500);
+                    Console.Write(".");
+                    Thread.Sleep(500);
+                    Console.Write(".");
+                    Thread.Sleep(500);
+                    CenterString("Just kiddin, have fun in there!");
+                    w1 = unarmed;
+                    break;
+                default:
+                    Weapons defaultChoice = new Weapons("Unarmed", 1, 3, 100, 0, WeaponType.None);
+                    CenterString("Bold Choice, my friend.");
+                    w1 = defaultChoice;
+
+                    break;
+
+            }
+
+            Console.WriteLine(w1);
+            Console.WriteLine();
+            CenterString($"{w1}");
+            Console.ReadKey();
+
+
 
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.DarkBlue;
@@ -61,7 +183,7 @@ namespace CrawlerGame
             CenterString("Initilized");
             Console.ResetColor();
 
-
+            int score = 0;
             bool quit = false;
                         
             do
@@ -87,14 +209,14 @@ namespace CrawlerGame
 
                 
 
-                int score = 0;
+                //int score = 0;
 
                 bool reload = false;
 
                 do
                 {
 
-
+                    
 
 
                     string pInfo = " C) Player Info";
@@ -141,17 +263,24 @@ namespace CrawlerGame
 
                         case "w":
                             Console.WriteLine();
+                            Console.ForegroundColor = ConsoleColor.DarkRed;
                             CenterString("You attacked swiftly!");
                             Console.WriteLine();
+                            Console.ResetColor();
                             Battle.DoBattle(test, testMon);
 
                             if (testMon.Health <= 0)
                             {
+                                
                                 Console.WriteLine("\n");
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
                                 CenterString($"{testMon.Name} has been defeated!");
-                                Console.WriteLine("\n");
+                                CenterString("-------------------------------");
+                                
                                 score++;
-
+                                CenterString($"Score: {score}");
+                                CenterString("-----------------------------");
+                                
                                 int goldgrab = testMon.Gold;
                                 int expgrab = testMon.Experience;
                                 test.Gold = goldgrab;
@@ -164,9 +293,22 @@ namespace CrawlerGame
                                 test.Gold += goldgrab;
                                 test.Experience += expgrab;
 
+                                CenterString("Do you wish to change weapons? [Y] or [N]");
+                                string newWeapon2 = Console.ReadKey(true).Key.ToString().ToLower();
 
+                                switch (newWeapon2)
+                                {
+                                    case "y":
+                                        goto weaponJump;
+                                        break;
+                                    case "n":
+                                        CenterString("Onward.");
+                                        break;
+                                    default:
+                                        CenterString("Onward.");
+                                        break;
+                                }
 
-                                Console.ReadKey(true);
                                 reload = true;
                             }
 
@@ -189,8 +331,10 @@ namespace CrawlerGame
                             }
                             else
                             {
-                                break;
-
+                                Console.WriteLine();
+                                CenterString("You bulstered your defensed and survived the onslaught!");
+                                continue;
+                                
                             }
 
 
@@ -278,10 +422,16 @@ namespace CrawlerGame
                         CenterString("No Mortal Escapes Death....");
                         Console.WriteLine();
                         Console.ForegroundColor = ConsoleColor.Green;
+
+
+                        
                         CenterString("===========");
                         CenterString("Final Score");
                         CenterString(Convert.ToString(score));
                         CenterString("===========");
+
+
+                        
                         Console.WriteLine();
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine(test);
@@ -294,9 +444,12 @@ namespace CrawlerGame
                         if (quitChoiceInfo == "y")
                         {
                             Console.WriteLine();
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
                             CenterString("Gotta love the adventurous types!");
                             Console.WriteLine();
-                            
+                            Console.ResetColor();
+
+                            score = 0;
                             goto jumpPoint;
                         }
                         else if (quitChoiceInfo == "n")
@@ -343,8 +496,8 @@ namespace CrawlerGame
             {
                 Console.WriteLine("\n\n\n\n\n");
                 Console.WriteLine();
-                string overMenu = "--------------";
-                string underMenu = "--------------";
+                string overMenu = "+-+-+-+-+-+-+-";
+                string underMenu = "-+-+-+-+-+-+-+";
                 CenterString(overMenu);
                 Console.WriteLine();
                 CenterString("W. Play Game");
@@ -354,7 +507,18 @@ namespace CrawlerGame
                 CenterString("E. Exit");
                 Console.WriteLine();
                 CenterString(underMenu);
-               
+
+                Console.WriteLine("");
+                string quote = "The first and greatest victory is to conquer oneself;";
+                string quote1 = "to be conquered by oneself is of all things most shameful and vile.";
+                
+                string Plato = "~Plato";
+             
+                CenterString(quote);
+                CenterString(quote1);
+                Console.WriteLine();
+                CenterString(Plato);
+
                 string menuChoice = Console.ReadKey(true).Key.ToString().ToLower();
 
                 switch (menuChoice)
@@ -373,6 +537,8 @@ namespace CrawlerGame
                         Console.WriteLine("Invalid Choice");
                         break;
                 }
+
+               
 
             } while (true);
                        
@@ -407,6 +573,6 @@ namespace CrawlerGame
             return randomEnvironment;
         } //end get environment
 
-
+       
     }//end class
 }//end Namespace

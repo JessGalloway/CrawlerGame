@@ -17,7 +17,8 @@ namespace CrawlerLibrary
         //Constructors
         public Monster() { }
 
-        public Monster(string name, int maxHealth, int health, int attack, int maxAttack, int defense, int maxDefense, int speed, int maxSpeed, int level, int maxLevel, int experience, int maxExperience, int gold, int maxGold, int accuracy, int maxAccuracy, int dodge, int maxDodge) : base(name, health, maxHealth, attack, maxAttack, defense, maxDefense, speed, maxSpeed, level, maxLevel, experience, maxExperience, gold, maxGold, accuracy, maxAccuracy, dodge, maxDodge)
+
+        public Monster(string name, int maxHealth, int health, int attack, int maxAttack, int defense, int speed, int level, int experience, int gold, int accuracy, int dodge) : base(name, maxHealth, health, attack, maxAttack, defense, speed, level, experience, gold, accuracy, dodge)
         {
             Name = name;
             Health = health;
@@ -25,33 +26,25 @@ namespace CrawlerLibrary
             Attack = attack;
             MaxAttack = maxAttack;
             Defense = defense;
-            MaxDefense = maxDefense;
             Speed = speed;
-            MaxSpeed = maxSpeed;
             Level = level;
-            MaxLevel = maxLevel;
             Experience = experience;
-            MaxExperience = maxExperience;
             Gold = gold;
-            MaxGold = maxGold;
             Accuracy = accuracy;
-            MaxAccuracy = maxAccuracy;
             Dodge = dodge;
-            MaxDodge = maxDodge;
-            
 
 
         }
 
         //Methods
 
-
+        //Change out exp and max exp on monster for weapon
         public override string ToString()
         {
             return $"                                         ----------------------------------\n" +
                    $"                                              {Name}      lvl:{Level}      Gold: {Gold}\n" +
                    $"                                                       Hp: {Health}/{MaxHealth}  \n" +
-                   $"                                                       Exp: {Experience}/{MaxExperience}\n" +
+                   $"                                                       Exp: {Experience}\n" +
                    $"                                          ----------------------------------\n" +
                    $"                                                        Atk: {Attack}\n" +
                    $"                                                        Def: {Defense}\n" +
@@ -97,16 +90,16 @@ namespace CrawlerLibrary
         public static Monster GetMonster() 
         {
 
-            Archer archer = new Archer("Archer", 20, 20, 10, 13, 10, 13, 10, 13, 10, 15, 10, 15, 15, 20, 65, 100, 15, 50);
+            Archer archer = new Archer("Archer", 20, 20, 10, 13, 10, 13, 10, 13, 10, 15, 100, 15);
 
-            SwordsWoman swordsWoman = new SwordsWoman("SwordsWoman", 25, 15, 13, 16, 15, 20, 20, 26, 13, 15, 20, 25, 30, 36, 75, 100, 40, 50);
+            SwordsWoman swordsWoman = new SwordsWoman("SwordsWoman", 25, 15, 13, 16, 15, 20, 20, 26, 13, 15, 100, 25);
 
-            SwordsMan swordsMan = new SwordsMan("SwordsMan", 25, 15, 13, 16, 15, 20, 20, 26, 13, 15, 20, 25, 30, 30, 76, 100, 40, 50);
+            SwordsMan swordsMan = new SwordsMan("SwordsMan", 25, 15, 13, 16, 15, 20, 20, 26, 13, 15, 100, 25);
 
-            Mage mage = new Mage("Mage", 20, 10, 17, 25, 10, 10, 100, 100, 10, 10, 20, 25, 40, 50, 20, 100, 10, 50);
+            Mage mage = new Mage("Mage", 20, 10, 17, 25, 10, 10, 100, 100, 10, 10, 20, 25);
 
 
-
+            
             var thief = new Archer();
             var undead = new SwordsWoman();
             var vagrant = new SwordsMan();

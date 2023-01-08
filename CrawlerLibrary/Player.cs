@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,61 +11,77 @@ namespace CrawlerLibrary
     public class Player : Character
     {
         //Fields
-        private bool _defend;
+
+        private int _maxExperience;
+
+        private int _maxGold;
+
+
+
+
         //Properties
 
         public bool defend { get; set; }
 
+        public Weapons EquippedWeapon { get; set; }
 
-        //public PlayerClass CharacterClass { get; set; }
+        private int MaxEperience { get { return _maxExperience; } set { _maxExperience = value; } }
 
+        private int MaxGold { get { return _maxGold; } set { _maxGold = value; } }
 
+        //private EquippedWeapon 
 
         //Constructors
 
-        public Player(string name, int maxHealth, int health, int attack, int maxAttack, int defense, int maxDefense, int speed, int maxSpeed, int level, int maxLevel, int experience, int maxExperience, int gold, int maxGold, int accuracy, int maxAccuracy, int dodge, int maxDodge) : base (name, maxHealth, health, attack, maxAttack, defense, maxDefense, speed, maxSpeed, level, maxLevel, experience, maxExperience, gold, maxGold, accuracy, maxAccuracy, dodge, maxDodge)
+        public Player(string name, int maxHealth, int health, int attack, int maxAttack, int defense, int speed, int level, int experience, int maxExperience, int gold, int maxGold, int accuracy, int dodge, Weapons equippedWeapon) : base(name, maxHealth, health, attack, maxAttack, defense, speed, level, experience, gold, accuracy, dodge)
         {
-            //CharacterClass = characterClass;
+            MaxEperience = maxExperience;
+            MaxGold = maxGold;
+            EquippedWeapon = equippedWeapon;
         }
 
         public Player() { }
 
-        
-        //public string GetPlayerClass(PlayerClass characterClass)
-        // {
+     
 
 
-        // }
-
-
-        //Mehods
+        //Methods
         public override int CalcDamage()
         {
-            return new Random().Next(Attack, MaxAttack + 1);
 
-        }//end CalcDa
+            Random rand = new Random();
+            int damage = rand.Next(EquippedWeapon.MinDamage, EquippedWeapon.MaxDamage + 1);
+
+            return damage;
+
+        }
+
+
+       
+
+
+
+        public override string ToString()
+        {
+            return $"                                         ----------------------------------\n" +
+                   $"                                              {Name}      lvl:{Level}      Gold: {Gold}\n" +
+                   $"                                                       Hp: {Health}/{MaxHealth}  \n" +
+                   $"                                                       Exp: {Experience}/{MaxEperience}\n" +
+                   $"                                          ----------------------------------\n" +
+                   $"                                                        Atk: {Attack}\n" +
+                   $"                                                        Def: {Defense}\n" +
+                   $"                                                        Spd: {Speed}\n" +
+                   $"                                          ----------------------------------\n";
+        }
+
+       
 
         
-
-
-        /*public int ExperienceToLevel()
-        {
-            if (Experience >= MaxExperience) 
-            {
-                Level += 1;
-                Experience = 0;
-                MaxExperience += 10;
-                MaxHealth += 10;
-                MaxAttack += 5;
-                MaxDefense += 5;
-                MaxSpeed += 5;
-                MaxAccuracy += 5;
-                MaxDodge += 5;
-                              
-            }
-            return Experience;
-        }//end experice */
-
+                
+        
+        
+        
+        
 
     }//end class
 }//end namespace
