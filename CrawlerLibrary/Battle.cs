@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CrawlerLibrary
 {
-    public class Battle
+    public static class Battle
     {
         public static void DoAttack(Character attacker, Character defender)
         {
@@ -44,7 +44,7 @@ namespace CrawlerLibrary
 
         }//end DoAttack
 
-
+        
         
 
         public static void DoBattle(Player player, Monster monster) 

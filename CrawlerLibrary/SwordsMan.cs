@@ -14,13 +14,11 @@ namespace CrawlerLibrary
         //properties
 
         //constructors
-        public SwordsMan(string name, int maxHealth, int health, int attack, int maxAttack, int defense, int maxDefense, int speed, int maxSpeed, int level, int maxLevel, int experience, int maxExperience, int gold, int maxGold, int accuracy, int maxAccuracy, int dodge, int maxDodge) : base(name, health, maxHealth, attack, maxAttack, defense, maxDefense, speed, maxSpeed, level, maxLevel, experience, maxExperience, gold, maxGold, accuracy, maxAccuracy, dodge, maxDodge)
+        public SwordsMan(string name, int maxHealth, int health, int attack, int maxAttack, int defense, int speed, int level, int maxLevel, int experience, int gold, int accuracy, int dodge) : base(name, maxHealth, health, attack, maxAttack, defense, speed, level, experience, gold, accuracy, dodge)
         {
 
-            
 
-
-        }//end FQCTOR
+        }
 
         public SwordsMan() 
         {
@@ -29,15 +27,10 @@ namespace CrawlerLibrary
             Attack = 12;
             MaxAttack = 15;
             Defense = 13;
-            MaxDefense = 19;
             Speed = 60;
-            MaxSpeed = 100;
             Gold = 00;
-            MaxGold = 15;
-            Accuracy = 90;
-            MaxAccuracy = 100;
-            Dodge = 35;
-            MaxDodge = 50;
+            Accuracy = 100;
+            Dodge = 3;
 
         }
 

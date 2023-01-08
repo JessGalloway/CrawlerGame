@@ -14,13 +14,23 @@ namespace CrawlerLibrary
         //properties
 
         //constructors
-        public Mage(string name, int maxHealth, int health, int attack, int maxAttack, int defense, int maxDefense, int speed, int maxSpeed, int level, int maxLevel, int experience, int maxExperience, int gold, int maxGold, int accuracy, int maxAccuracy, int dodge, int maxDodge) : base(name, health, maxHealth, attack, maxAttack, defense, maxDefense, speed, maxSpeed, level, maxLevel, experience, maxExperience, gold, maxGold, accuracy, maxAccuracy, dodge, maxDodge)
+        public Mage(string name, int maxHealth, int health, int attack, int maxAttack, int defense, int speed, int level, int maxLevel, int experience, int gold, int accuracy, int dodge) : base(name, maxHealth, health, attack, maxAttack, defense, speed, level, experience, gold, accuracy, dodge)
         {
+            Name = name;
+            Health = health;
+            MaxHealth = maxHealth;
+            Attack = attack;
+            MaxAttack = maxAttack;
+            Defense = defense;
+            Speed = speed;
+            Level = level;
+            MaxLevel = maxLevel;
+            Experience = experience;
+            Gold = gold;
+            Accuracy = accuracy;
+            Dodge = dodge;
 
-           
-
-
-        }//end FQCTOR
+        }
 
         public Mage() 
         {
@@ -29,15 +39,10 @@ namespace CrawlerLibrary
             Attack = 19;
             MaxAttack = 25;
             Defense = 0;
-            MaxDefense = 0;
             Speed = 65;
-            MaxSpeed = 100;
             Gold = 20;
-            MaxGold = 25;
-            Accuracy = 45;
-            MaxAccuracy = 100;
-            Dodge = 40;
-            MaxDodge = 50;
+            Accuracy = 100;
+            Dodge = 0;
 
         }
 
