@@ -31,10 +31,10 @@ namespace CrawlerGame
             CenterString("May I have your name Traveler?");
             Console.SetCursorPosition(origCol + 57, origRow - 17);
             string userName = Console.ReadLine().ToString();
-            
 
-            
+            Weapons w1 = new Weapons("unaarmed", 5, 8, 100, 14, WeaponType.None);
 
+            Player test = new Player(name: userName, 30, 30, 11, 12, 11, 11, 10, 0, 20, 0, 2000, 100, 40, w1);
 
 
             Thread.Sleep(600);
@@ -48,16 +48,16 @@ namespace CrawlerGame
             jumpPoint:
             weaponJump:
 
-            Weapons w1 = new Weapons("unaarmed", 5, 8, 100, 14, WeaponType.None);
+            
                 
            
            //w Weapons w2 = new Weapons("Sword", 5, 8, 100, 14, WeaponType.Sword);
             //Weapons.GetWeaponType(w2);
             //Console.ReadKey();
-            Player test = new Player(name: userName, 30, 30, 11, 12, 11, 11, 10, 0, 20, 0, 2000, 100, 40, w1);
+           
            
 
-            CenterString("Choose a Weapon? Press enter when done.");
+            CenterString("Do you have a prefered Weapon?");
           
             CenterString("[1] Dagger");
             Console.WriteLine();
@@ -160,9 +160,10 @@ namespace CrawlerGame
             }
 
             //Console.WriteLine(w1);
-            //Console.WriteLine();
+            Console.WriteLine();
             CenterString($"{w1}");
-            Console.ReadKey();
+
+            CenterString("");
 
 
 
@@ -249,9 +250,20 @@ namespace CrawlerGame
                             Console.ForegroundColor = ConsoleColor.DarkBlue;
                             Console.WriteLine("\n\n");
                             Console.WriteLine(test);
-                            Console.WriteLine();
-                            Console.ReadKey();
                             Console.ResetColor();
+                            Console.WriteLine();
+
+                            
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            CenterString("-------------------------------");
+                            CenterString($"Score: {score}");
+                            CenterString("-----------------------------");
+                            Console.ResetColor();
+
+
+
+                            Console.ReadKey();
+                          
 
                             break;
 
@@ -284,34 +296,45 @@ namespace CrawlerGame
                                 score++;
                                 CenterString($"Score: {score}");
                                 CenterString("-----------------------------");
-                                
+                                Console.ResetColor();
+
                                 int goldgrab = testMon.Gold;
                                 int expgrab = testMon.Experience;
                                 test.Gold = goldgrab;
                                 test.Experience = expgrab;
 
+                                Console.ForegroundColor = ConsoleColor.DarkYellow;
                                 CenterString($"{test.Name} has gained {goldgrab} gold!");
                                 Console.WriteLine();
                                 CenterString($"{test.Name} has gained {expgrab} experience!");
-
+                                Console.ResetColor();
                                 test.Gold += goldgrab;
                                 test.Experience += expgrab;
 
-                                CenterString("Do you wish to change weapons? [Y] or [N]");
-                                string newWeapon2 = Console.ReadKey(true).Key.ToString().ToLower();
-
-                                switch (newWeapon2)
+                                if (score >= 5 && score < 6 ) 
                                 {
-                                    case "y":
-                                        goto weaponJump;
-                                        break;
-                                    case "n":
-                                        CenterString("Onward.");
-                                        break;
-                                    default:
-                                        CenterString("Onward.");
-                                        break;
+                                    Weapons weaponDrop = Weapons.GetDropWeapon();
+                                    
+                                    CenterString($"After the fight you find a {weaponDrop}!");
+                                    CenterString("Do you wish to change weapons? [Y] or [N]");
+                                    string newWeapon2 = Console.ReadKey(true).Key.ToString().ToLower();
+
+                                    switch (newWeapon2)
+                                    {
+                                        case "y":
+                                            test.EquippedWeapon = weaponDrop;                                            
+                                            break;
+                                        case "n":
+                                            CenterString("Onward.");
+                                            break;
+                                        default:
+                                            CenterString("Onward.");
+                                            break;
+                                    }
+
+
                                 }
+                                
 
                                 reload = true;
                             }
