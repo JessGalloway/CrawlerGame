@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrawlerGame", "CrawlerGame\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrawlerLibrary", "CrawlerLibrary\CrawlerLibrary.csproj", "{A9D7B2FD-6253-499F-9DBA-40FEB275D3EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrawlerUnitTest", "CrawlerUnitTest\CrawlerUnitTest.csproj", "{2400DDE2-DE8F-47A8-8400-7A357B6E8729}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A9D7B2FD-6253-499F-9DBA-40FEB275D3EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9D7B2FD-6253-499F-9DBA-40FEB275D3EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9D7B2FD-6253-499F-9DBA-40FEB275D3EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2400DDE2-DE8F-47A8-8400-7A357B6E8729}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2400DDE2-DE8F-47A8-8400-7A357B6E8729}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2400DDE2-DE8F-47A8-8400-7A357B6E8729}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2400DDE2-DE8F-47A8-8400-7A357B6E8729}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

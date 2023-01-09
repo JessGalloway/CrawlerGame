@@ -53,20 +53,29 @@ namespace CrawlerLibrary
 
 
 
-        //public WeaponType weapon()
-        //{
-        //    Type = WeaponType.Sword;
-        //    Type = WeaponType.Dagger;
-        //    Type = WeaponType.Axe;
-        //    Type = WeaponType.Bow;
-        //    Type = WeaponType.BoStaff;
-        //    Type = WeaponType.Katana;
-        //    Type = WeaponType.Magic;
-        //    Type = WeaponType.Whip;
-        //    Type = WeaponType.None;
-            
-        //}
+        public static Weapons GetDropWeapon() 
+        {
 
+            Weapons sword = new Weapons("Sword of Norm", 10, 20, 100, 10, WeaponType.Sword);
+            Weapons axe = new Weapons("Ishmal Axe", 15, 25, 100, 10, WeaponType.Axe);
+            Weapons bow = new Weapons("Geit Bow", 10, 20, 100, 10, WeaponType.Bow);
+            Weapons bowstaff = new Weapons("Hatzu broken staff", 10, 20, 100, 10, WeaponType.BoStaff);
+            Weapons katan = new Weapons("Katzu", 25, 25, 100, 25, WeaponType.Katana);
+            Weapons whip = new Weapons("The wild wild Whip", 12, 16, 75, 75, WeaponType.Whip);
+            Weapons knucks = new Weapons("Sonic Knucks", 10, 14, 100, 40, WeaponType.None);
+
+
+            
+
+            List<Weapons> dropWeapons = new List<Weapons>() { sword, axe, bow, bowstaff, katan, whip, knucks };
+
+            int randWeap = new Random().Next(dropWeapons.Count);
+            Weapons dropWeapon = dropWeapons[randWeap];
+            return dropWeapon;
+
+
+
+        }
 
 
         //public list status conditons 
@@ -81,47 +90,14 @@ namespace CrawlerLibrary
 
         public override string ToString()
         {
-            return $"{Name}\t{MinDamage} to {MaxDamage} Damage\n" +
-                $"B: {Accuracy}%\n" +
-                $"Bonus Dodge: {Dodge}%\n";
+            return $"\t\t\t\t\t\t~{Name}\t{MinDamage} to {MaxDamage} Damage~\n" +
+                $"\t\t\t\t\t\t------------------------\n" +
+                $"\t\t\t\t\t\t     Accuracy: {Accuracy}%\n" +
+                $"\t\t\t\t\t\t    Bonus Dodge: {Dodge}%\n";
         }
 
        
-        //public Weapons GetWeaponType(WeaponType s)
-        //{
-            
-        //    Weapons dagger = new Weapons("Dagger", 1, 4, 0, 0, WeaponType.Dagger);
-        //    Weapons sword = new Weapons("Sword", 1, 6, 0, 0, WeaponType.Sword);
-        //    Weapons axe = new Weapons("Axe", 1, 8, 0, 0, WeaponType.Axe);
-        //    Weapons bow = new Weapons("Bow", 7, 13, 100, 0, WeaponType.Bow);
-        //    Weapons boStaff = new Weapons("Bo Staff", 1, 4, 0, 0, WeaponType.BoStaff);
-        //    Weapons katana = new Weapons("Katana", 12, 16, 100, 30, WeaponType.Katana);
-        //    Weapons Magic = new Weapons("Magic", 15, 20, 40, 30, WeaponType.Magic);
-        //    Weapons Whip = new Weapons("Whip", 1, 4, 0, 0, WeaponType.Whip);
-        //    Weapons none = new Weapons("Unarmed", 1, 2, 100, 0, WeaponType.None);
-        //    switch (Type)
-        //    {
-        //        case WeaponType.Dagger:
-        //            return dagger;
-        //        case WeaponType.Sword:
-        //            return sword;
-        //        case WeaponType.Axe:
-        //            return axe;
-        //        case WeaponType.Bow:
-        //            return bow;
-        //        case WeaponType.BoStaff:
-        //            return boStaff;
-        //        case WeaponType.Katana:
-        //            return katana;
-        //        case WeaponType.Magic:
-        //            return Magic;
-        //        case WeaponType.Whip:
-        //            return Whip;
-        //        default:
-        //            return none;
-        //    }
-
-        //}
+       
 
     }//end class
 }//end namespace
